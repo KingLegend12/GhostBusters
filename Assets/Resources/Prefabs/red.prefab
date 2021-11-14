@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3149924460616292154}
   - component: {fileID: 6463362658427081804}
+  - component: {fileID: -8599678794009615627}
   m_Layer: 0
   m_Name: red
   m_TagString: Untagged
@@ -82,3 +83,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8599678794009615627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129221641056787087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3824957e44d0a4eb88fd5ce7ee4f47bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iscovered: 1
+  coveredSprite: {fileID: 21300000, guid: b24ebc3c35da04cbb835758dd53aeb51, type: 3}
+  tileKind: 2
