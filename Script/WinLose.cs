@@ -7,6 +7,7 @@ public class WinLose : MonoBehaviour
 {
     public UnityEvent buttonClick; 
     public Sprite btn;
+   
     public Game var;
     void Awake()
      { 
@@ -27,7 +28,9 @@ public class WinLose : MonoBehaviour
         var.CheckInputGrid();
        
     }
-    
+   
+
+
     private void CheckInput() 
     { 
             if(Input.GetButtonDown("Fire1")) 
@@ -39,8 +42,14 @@ public class WinLose : MonoBehaviour
                     int b = Mathf.RoundToInt(mousePosition.y);
                     if(a>5 || b >14 || a<0 || b<0)
                      {      
-                          if(var.gx == var.lastcheckedX && var.gy== var.lastcheckedY ) 
+              if(var.gx == var.lastcheckedX && var.gy== var.lastcheckedY ) 
                { 
+
+                   Tile ghostcell =  Instantiate(Resources.Load("Prefabs/ghostpic", typeof(Tile)), new Vector3(var.gx, var.gy, 0), Quaternion.identity) as Tile;
+                   Tile T = var.grid[var.gx, var.gy];
+                   T.SetIsCovered(false);
+                   var.grid[var.gx, var.gy]=ghostcell;
+                   
                    print("You Busted the ghost ! CONGRATS !");
                } 
                     else print("You busted the wrong cell ! GAME OVER !"); 
