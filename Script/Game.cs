@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     
     public Tile[,] grid = new Tile[6, 15];
-    public GameObject[,] Textgrid = new GameObject[6, 15];
+    
     
     public double probabilitycount = 2; 
     public int gx;
@@ -42,9 +42,9 @@ public class Game : MonoBehaviour
 
         //Table4
          if(color.Equals("red") && DistanceFromGhost==0) return 0.7;
-         if(color.Equals("yellow") && DistanceFromGhost==0) return 0;
-         if(color.Equals("green") && DistanceFromGhost==0) return 0;
-         if(color.Equals("orange") && DistanceFromGhost==0) return 0.3;
+         if(color.Equals("yellow") && DistanceFromGhost==0) return 0.05;
+         if(color.Equals("green") && DistanceFromGhost==0) return 0.05;
+         if(color.Equals("orange") && DistanceFromGhost==0) return 0.2;
 
          return 0;
     }
@@ -114,6 +114,7 @@ public class Game : MonoBehaviour
                      { 
                             grid[x,y].probability.text=Math.Round((JointTableProbability("green", Distance)*Distance/(Distance*NumberOfGreens)),3).ToString();
                                 int G = NumberOfGreens;
+                                redDistance=Distance;
                              for (int yy =0 ; yy< 15; yy++) { 
                         for (int xx = 0; xx < 6; xx++)
                                                    { 
@@ -129,9 +130,9 @@ public class Game : MonoBehaviour
                                            grid[xx,yy].probability.text=Math.Round((JointTableProbability("green", Distance)*Distance/(Distance*G)),3).ToString(); 
                                           
                                        }
-                                       if(JointTableProbability("yellow", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("yellow", Distance)*1/Distance),3).ToString();
-                                       if(JointTableProbability("orange", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("orange", Distance)*1/Distance),3).ToString();
-                                       if(JointTableProbability("red", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", Distance)*1/(Distance+1)),3).ToString();
+                                       if(JointTableProbability("yellow", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("yellow", Distance)*Distance/(Distance*NumberOfYellow)),3).ToString();
+                                       if(JointTableProbability("orange", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("orange", Distance)*Distance/(Distance*NumberOfOranges)),3).ToString();
+                                       if(JointTableProbability("red", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", redDistance)),3).ToString();
 
                                    }
                                                       }
@@ -151,10 +152,10 @@ public class Game : MonoBehaviour
                                      if(yy>=gy) DistanceY = yy-gy;
                                            else DistanceY = gy-yy;
                                            Distance=DistanceX+DistanceY;
-                                    if(JointTableProbability("yellow", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("yellow", Distance)*1/Distance), 3).ToString();
+                                    if(JointTableProbability("yellow", Distance)>=0.5) grid[xx,yy].probability.text= "<0.01";
                                     if(JointTableProbability("green", Distance)>=0.5)  grid[xx,yy].probability.text=Math.Round((JointTableProbability("green", Distance)*1/Distance), 3).ToString();
                                     if(JointTableProbability("orange", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("orange", Distance)*1/Distance), 3).ToString();
-                                    if(JointTableProbability("red", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", Distance)*Distance/(redDistance)), 3).ToString();
+                                    if(JointTableProbability("red", Distance)>=0.5) grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", Distance)), 3).ToString();
 
                                    }
                                                       }
@@ -177,8 +178,8 @@ public class Game : MonoBehaviour
                                       if(JointTableProbability("yellow", Distance)>=0.5)   grid[xx,yy].probability.text=Math.Round((JointTableProbability("yellow", Distance)*1/Distance), 3).ToString();
                                        if(JointTableProbability("green", Distance)>=0.5)  grid[xx,yy].probability.text=Math.Round((JointTableProbability("green", Distance)*1/Distance), 3).ToString();
                                        if(JointTableProbability("red", Distance)>=0.5)  { 
-                                            if(redDistance==2)    grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", redDistance)*(redDistance/(JointTableProbability("orange", redDistance)+0.25))),3).ToString();
-                                                else if(redDistance==1) grid[xx,yy].probability.text=0.99.ToString();
+                                                grid[xx,yy].probability.text=Math.Round((JointTableProbability("red", redDistance)*(redDistance/(JointTableProbability("orange", redDistance)+0.25))),3).ToString();
+                                                
 
                                        }
                                        
