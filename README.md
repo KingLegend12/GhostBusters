@@ -1,7 +1,11 @@
 # GhostBusters Homework Report
+
 #Team Members: Driss Jaidi and Mohammed Chaouni
+
 #Version 4
+
 In this project we play a game when we click a cell on the grid a color is displayed (red maybe on the ghost, orange one or two cells away, yellow three or 4 cells away, green 5 or more cells away) where we will have probabilities to guide us to the ghost location and bust it to the win the game.
+
 This small project contains five scripts:
 Game.cs: contains all primary functions of the program
 Tile.cs: contains the variables of the grid (one tile constitutes one cell of the grid)
